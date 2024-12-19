@@ -6,7 +6,7 @@ public record UserDTO(
         String password
 ) {
     public static UserDTO toDTO(UserEntity userEntity){
-        return new UserDTO(userEntity.getId(), userEntity.getEmail(), userEntity.getEmail());
+        return new UserDTO(userEntity.getId(), userEntity.getEmail(), userEntity.getPassword());
     }
 
     public UserEntity toEntity(){
