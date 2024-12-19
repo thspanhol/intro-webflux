@@ -49,4 +49,8 @@ public class UserService {
                 .switchIfEmpty(Mono.error(new ResponseStatusException(HttpStatus.NOT_FOUND)))
                 .map(UserDTO::toDTO);
     }
+
+    public Mono<String> getJoke() {
+        return JokeApi.getJoke();
+    }
 }

@@ -1,6 +1,7 @@
 package br.com.forttiori.webflux;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.mongodb.core.aggregation.StringOperators;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
@@ -26,6 +27,11 @@ public class UserController {
     public Flux<UserDTO> findByEmail(@PathVariable String email) {
         return Flux.merge(userService.getWithEmail(email), sink.asFlux())
                 .delayElements(Duration.ofSeconds(4));
+    }
+
+    @GetMapping("/joke")
+    public Mono<String> Joke() {
+        return userService.getJoke();
     }
 
     @GetMapping("/{id}")
